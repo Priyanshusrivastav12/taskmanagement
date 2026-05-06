@@ -25,8 +25,10 @@ connectDB();
 app.use(helmet());
 app.use(
   cors({
-    origin: process.env.CLIENT_URL?.split(',') || 'http://localhost:5173',
-    credentials: true,
+    origin: '*',
+    credentials: false,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
   })
 );
 app.use(express.json({ limit: '10mb' }));
